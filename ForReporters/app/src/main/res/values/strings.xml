@@ -3,6 +3,8 @@
     <string-array
         name = "rooms">
         <item
+            >What room are you located in?</item>
+        <item
             >251</item>
         <item
             >249</item>

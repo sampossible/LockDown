@@ -7,39 +7,46 @@
     tools:context=".MainActivity">
 
     <SeekBar
-        android:id="@+id/seekBar2"
+        android:id="@+id/threatLevelSeekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="210dp"
-        android:layout_height="43dp"
+        android:layout_height="64dp"
         android:layout_marginBottom="24dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="84dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="24dp"
+        android:max="5"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.036"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText4"
-        app:layout_constraintVertical_bias="0.512" />
+        app:layout_constraintVertical_bias="0.498" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/output"
+        android:layout_width="300dp"
         android:layout_height="30dp"
         android:layout_marginBottom="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="24dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="332dp"
         android:text="TextView"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintHorizontal_bias="0.653"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.088" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
+        android:id="@+id/occupantsTextView"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="128dp"
         android:layout_marginEnd="24dp"
@@ -50,17 +57,19 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Number of Occupants"
+        android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintHorizontal_bias="0.385"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.968" />
+        app:layout_constraintVertical_bias="0.941"
+        tools:layout_width="300dp" />
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="172dp"
-        android:layout_height="41dp"
+        android:id="@+id/threatLevelTextView"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginLeft="40dp"
@@ -69,17 +78,18 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Proximity to Threat..."
+        android:text="Proximity to Threat"
+        android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintHorizontal_bias="0.385"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.374" />
+        app:layout_constraintVertical_bias="0.359" />
 
     <SeekBar
-        android:id="@+id/seekBar3"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:id="@+id/occupantsSeekBar"
+        style="@style/Widget.AppCompat.SeekBar"
         android:layout_width="305dp"
         android:layout_height="51dp"
         android:layout_marginBottom="56dp"
@@ -95,10 +105,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.994" />
+        app:layout_constraintVertical_bias="0.967"
+        tools:layout_height="64dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/lowTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -108,46 +119,48 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
         android:text="Low"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.542" />
+        app:layout_constraintVertical_bias="0.519" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/highTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="228dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="36dp"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="36dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="High"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.989"
+        app:layout_constraintHorizontal_bias="0.979"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.501" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinnerRooms"
         android:layout_width="424dp"
         android:layout_height="62dp"
         android:layout_marginBottom="364dp"
         android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:entries="2111"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.404"
+        app:layout_constraintHorizontal_bias="0.687"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.491" />
 
     <EditText
         android:id="@+id/editText4"
@@ -162,7 +175,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Huntsville High School"
-        app:layout_constraintBottom_toTopOf="@+id/spinner2"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerRooms"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

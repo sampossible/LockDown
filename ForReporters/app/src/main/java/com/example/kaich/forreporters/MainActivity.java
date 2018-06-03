@@ -16,15 +16,19 @@ public class MainActivity extends AppCompatActivity {
 
     private Spinner mSpinnerRooms;
     private ArrayAdapter<CharSequence> mArrayAdapter;
-    private TextView mThreatLevelTextView = (TextView) findViewById(R.id.threatLevelTextView);
-    private TextView mLowTextView = (TextView) findViewById(R.id.lowTextView);
-    private TextView mHighTextView = (TextView) findViewById(R.id.highTextView);
+    private TextView mThreatLevelTextView;
+    private TextView mLowTextView;
+    private TextView mHighTextView;
     private SeekBar mThreatLevelSeekBar;
-    private TextView mOccupantTextView = (TextView) findViewById(R.id.occupantTextView);
+    private TextView mOccupantsTextView;
     private SeekBar mOccupantsSeekBar;
-    private String report = "Skyline High School";
 
-    //reports will be in SchoolName.RoomNumber.ThreatLevel.Occupants
+    private String report = "Huntsville High School";   //reports will be in SchoolName.RoomNumber.ThreatLevel.Occupants
+    private String range;
+    private int threatLevel;
+
+    private TextView mOutput; //for testing purposes
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +42,14 @@ public class MainActivity extends AppCompatActivity {
         mSpinnerRooms.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                report.concat("." + (String)parent.getItemAtPosition(position));
-                mThreatLevelSeekBar.setEnabled(true);
+                ((TextView) parent.getChildAt(0)).setTextSize(24);
+                if(((String)parent.getItemAtPosition(position)).equals("What room are you located in?")){
+
+                }else{
+                    report += ("." + (String)parent.getItemAtPosition(position));
+                    mThreatLevelSeekBar.setEnabled(true);
+                }
+
             }
 
             @Override
@@ -53,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         mThreatLevelSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                report.concat("." + progress + "");
+                threatLevel = progress;
                 mOccupantsSeekBar.setEnabled(true);
             }
 
@@ -73,8 +83,17 @@ public class MainActivity extends AppCompatActivity {
         mOccupantsSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                mOccupantTextView.setText("Number of Occupants: " + progress);
-                report.concat("." + progress + "")
+                if(progress < 3){
+                    range = "1 - 4";
+                }else if (progress < 6){
+                    range = "5 - 10";
+                }else if (progress < 9){
+                    range = "11 - 18";
+                }else{
+                    range = "18+";
+                }
+                mOccupantsTextView.setText("Number of Occupants: " + range);
+
             }
 
             @Override
@@ -84,17 +103,27 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                report += "." + threatLevel;
+                report += ("." + range);
                 sendReport();
-                Toast.makeText(MainActivity.this, "Report Sent to First Responders", Toast.LENGTH_LONG);
+                Toast.makeText(MainActivity.this, "Report Sent to First Responders", Toast.LENGTH_LONG).show();
                 mSpinnerRooms.setEnabled(false);
                 mThreatLevelSeekBar.setEnabled(false);
                 mOccupantsSeekBar.setEnabled(false);
             }
         });
+
+        mThreatLevelTextView = (TextView) findViewById(R.id.threatLevelTextView);
+        mThreatLevelTextView.setFocusable(false);
+        mOccupantsTextView = (TextView) findViewById(R.id.occupantsTextView);
+        mOccupantsTextView.setFocusable(false);
+        mHighTextView = (TextView) findViewById(R.id.highTextView);
+        mLowTextView = (TextView) findViewById(R.id.lowTextView);
+        mOutput = (TextView) findViewById(R.id.output);
     }
 
     public void sendReport(){
-        System.out.println(report);
+        mOutput.setText(report);
         //send report to website
     }
 
