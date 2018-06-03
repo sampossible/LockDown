@@ -10,6 +10,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
@@ -124,10 +127,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendReport(){
         mOutput.setText(report);
-        //send report to website
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue(report);
+        //send report to app
     }
 
     public String getReport() {
         return report;
     }
 }
+
+
